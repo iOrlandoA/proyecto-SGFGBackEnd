@@ -64,8 +64,17 @@ _
     
 Regresar al proyecto
 
+
+    
+
     sudo service postgresql start
 
-_
 
-    rails server
+
+Instalar todas las gemas: bundle install
+
+Crear la base de datos:     rake db:    
+
+Correr las migraciones:     rake db:migrate
+
+Levantar el servidor:       rails server
