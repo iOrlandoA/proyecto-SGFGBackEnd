@@ -1,7 +1,7 @@
 # README
 
 
-## Regresar al proyecto
+# Regresar al proyecto
 
     sudo service postgresql start
 
@@ -24,14 +24,35 @@ Levantar el servidor:
        rails server
 
 
+
+
 # Instalación Inicial
 
-
+_____________________________________________________________________________________________________________________
+### POSGRESQL
 ## Instalar el postgresql: 
     
     sudo apt install postgresql postgresql-contrib
+    
+Instalar libpq-dev:
 
+    sudo apt-get install libpq-dev
+    
+    
+### Crear la Base de Datos
+    
+Entrar en la Consola de PosgreSQL
 
+    sudo -u postgres psql 
+Crear Contraseña
+
+    \password postgres
+Crear una base de datos
+ 
+    CREATE DATABASE datosSGFG;
+
+_____________________________________________________________________________________________________________
+### RUBY ON RAILS
 ## Instalar Ruby On Rails: 
 
 
@@ -85,24 +106,5 @@ Paso 1:
  
     gem install rails
 
-
-# Inicializar Proyecto
-
-
-_
-
-    sudo apt-get install libpq-dev
-    
-_
-
-    sudo service postgresql
-    
-_
-
-    rake:db create
-    
-_
-
-    bundle install
     
 
