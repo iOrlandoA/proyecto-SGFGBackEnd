@@ -24,19 +24,15 @@ Levantar el servidor:
        rails server
 
 
+# Instalación Inicial
 
 
-###Instalación Inicial
-
-
-
-
-##Instalar el postgresql: 
+## Instalar el postgresql: 
     
     sudo apt install postgresql postgresql-contrib
 
 
-##Instalar Ruby On Rails: 
+## Instalar Ruby On Rails: 
 
 
 Paso 1: 
@@ -68,7 +64,7 @@ Paso 1:
     source ~/.rvm/scripts/rvm
   
 
-#Confirmar que se instalo correctamente: 
+### Confirmar que se instalo correctamente: 
     
     rvm --version
 
@@ -90,7 +86,7 @@ Paso 1:
     gem install rails
 
 
-###Inicializar Proyecto
+# Inicializar Proyecto
 
 
 _
