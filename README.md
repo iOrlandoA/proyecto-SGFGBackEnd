@@ -45,6 +45,7 @@ _
 
 Inicializar Proyecto
 
+
 _
 
     sudo apt-get install libpq-dev
@@ -60,6 +61,10 @@ _
 _
 
     bundle install
+    
+Regresar al proyecto
+
+    sudo service postgresql start
 
 _
 
