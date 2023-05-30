@@ -25,6 +25,8 @@ _
     source ~/.rvm/scripts/rvm
 
 Confirmar que se instalo correctamente
+
+    
  
     rvm --version
 
@@ -35,7 +37,7 @@ _
 _
 
     rvm use 2.7.0 --default
-
+    
 _
     
     gem install rails
@@ -43,13 +45,22 @@ _
 
 Inicializar Proyecto
 
+_
+
+    sudo apt-get install libpq-dev
+    
+_
 
     sudo service postgresql
+    
 _
 
     rake:db create
+    
 _
 
     bundle install
 
-rails server
+_
+
+    rails server
