@@ -28,15 +28,15 @@ Confirmar que se instalo correctamente
  
     rvm --version
 
--    
+_    
     
     rvm install 2.7.0  
 
--
+_
 
     rvm use 2.7.0 --default
 
--
+_
     
     gem install rails
 
