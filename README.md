@@ -41,11 +41,15 @@ _
     gem install rails
 
 
-sudo service postgresql
+Inicializar Proyecto
 
 
-rake:db create
+    sudo service postgresql
+_
 
-bundle install
+    rake:db create
+_
+
+    bundle install
 
 rails server
