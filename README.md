@@ -44,7 +44,7 @@ Instalar libpq-dev:
 Entrar en la Consola de PosgreSQL
 
     sudo -u postgres psql 
-Crear Contraseña
+Crear Contraseña (postgresql)
 
     \password postgres
 Crear una base de datos
