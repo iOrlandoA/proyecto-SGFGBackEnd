@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :directors
-  scope module: :api do 
-    ## Aqui van los recursos del API
+  resources :bills
+
+
+  scope module: :api, path: "api" do
+    resources :bills
   end
+
 end
