@@ -44,7 +44,7 @@ module Api
         end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :billtype, :description, :startdate, :finishdate)
+          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :voucher)
         end
     end
     end
