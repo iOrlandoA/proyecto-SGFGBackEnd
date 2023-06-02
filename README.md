@@ -40,6 +40,7 @@ Instalar libpq-dev:
     
     
 ### Crear la Base de Datos
+Revisar el yml y cambiar si es diferente username y password
     
 Entrar en la Consola de PosgreSQL
 
