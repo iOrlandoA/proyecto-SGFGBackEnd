@@ -25,8 +25,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_03_032547) do
     t.integer "price"
     t.string "description"
     t.string "area"
-    t.string "date_created"
-    t.string "date_expired"
+    t.date "date_created"
+    t.date "date_expired"
     t.integer "voucher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

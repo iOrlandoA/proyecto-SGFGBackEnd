@@ -5,8 +5,8 @@ class CreateBills < ActiveRecord::Migration[7.0]
       t.integer :price
       t.string :description
       t.string :area
-      t.string :date_created
-      t.string :date_expired
+      t.date :date_created
+      t.date :date_expired
       t.integer :voucher 
 
       t.timestamps
