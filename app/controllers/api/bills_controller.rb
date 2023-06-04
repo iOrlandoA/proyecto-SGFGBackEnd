@@ -5,8 +5,20 @@ module Api
       before_action :set_bill, only: %i[ show edit update destroy ]
     
       def index
-        @bills = Bill.all
+        query = Bill.all
+    
+        if params[:voucher].present?
+          query = query.where(voucher: params[:voucher])
+        end
+    
+        if params[:start_date].present? && params[:end_date].present?
+          query = query.where("date_created >= ? AND date_expired <= ?", params[:start_date], params[:end_date])
+        end
+    
+        @bills = query
+        render json: @bills
       end
+      
     
       def show; end
     
