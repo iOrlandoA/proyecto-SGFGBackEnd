@@ -1,4 +1,4 @@
-
+User.first_or_create(email: 'admin@gmail.com', password: 'password', password_confirmation: 'password', role: 'admin')
 
 
 Area.create(area_type:"Comisión Transferencia TFT");
