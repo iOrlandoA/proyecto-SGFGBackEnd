@@ -1,8 +1,8 @@
 module Api
 
     class AreasController < ApplicationController
-      skip_before_action :verify_authenticity_token
       before_action :set_area, only: %i[ show edit update destroy ]
+      before_action :authenticate_user!
     
       def index
         @areas = Area.all

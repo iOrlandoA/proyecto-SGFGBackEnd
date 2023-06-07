@@ -1,8 +1,8 @@
 module Api
 
     class BillsController < ApplicationController
-      skip_before_action :verify_authenticity_token
       before_action :set_bill, only: %i[ show edit update destroy ]
+      before_action :authenticate_user!
     
       def index
         query = Bill.all
