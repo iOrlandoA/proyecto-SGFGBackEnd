@@ -1,6 +1,6 @@
 module Api
 
-    class AreasController < ApplicationController
+    class AreasController < ApiController
       before_action :set_area, only: %i[ show edit update destroy ]
       before_action :authenticate_user!
     

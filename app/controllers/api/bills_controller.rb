@@ -1,6 +1,6 @@
 module Api
 
-    class BillsController < ApplicationController
+    class BillsController < ApiController
       before_action :set_bill, only: %i[ show edit update destroy ]
       before_action :authenticate_user!
     
@@ -59,4 +59,5 @@ module Api
           params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :voucher)
         end
     end
-    end
+  end
+  
