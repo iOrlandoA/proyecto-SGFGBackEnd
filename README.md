@@ -18,6 +18,10 @@ Crear la base de datos:
 Correr las migraciones:     
     
       rake db:migrate
+      
+Correr las semillas:
+
+    rake db:seed
 
 Levantar el servidor:       
     
