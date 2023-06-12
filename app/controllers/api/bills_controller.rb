@@ -7,8 +7,8 @@ module Api
       def index
         query = Bill.all
     
-        if params[:voucher].present?
-          query = query.where(voucher: params[:voucher])
+        if params[:bill_ref].present?
+          query = query.where(bill_ref: params[:bill_ref])
         end
     
         if params[:start_date].present? && params[:end_date].present?
@@ -56,7 +56,7 @@ module Api
         end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :voucher)
+          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref)
         end
     end
     end
