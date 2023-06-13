@@ -7,7 +7,9 @@ module Api
         @payments = Payment.all
       end
   
-      def show; end
+      def show 
+        @bill = Bill.find_by(bill_ref: @payment.bill_ref)
+      end
   
       def new
         @payment = Payment.new
@@ -17,6 +19,7 @@ module Api
   
       def create
         @payment = Payment.new(payment_params)
+        @payment.date_created = Date.today
         if @payment.save
           render 'api/payments/show', status: :created
         else
@@ -44,7 +47,7 @@ module Api
       end
   
       def payment_params
-        params.require(:payment).permit(:bill_ref, :date_created, :amount, :voucher)
+        params.require(:payment).permit(:bill_ref, :amount, :voucher)
       end
     end
   end

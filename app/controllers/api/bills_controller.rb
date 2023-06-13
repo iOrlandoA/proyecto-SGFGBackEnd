@@ -20,7 +20,9 @@ module Api
       end
       
     
-      def show; end
+      def show 
+        @payments = Payment.where(bill_ref: @bill.bill_ref)
+      end
     
       def new
         @bill = Bill.new
