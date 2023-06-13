@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payments
   resources :areas
   resources :bills
 
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   scope module: :api, path: "api" do
     resources :bills
     resources :areas
+    resources :payments
   end
 
 end
