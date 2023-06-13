@@ -44,7 +44,7 @@ module Api
         end
     
         def area_params
-          params.require(:area).permit(:name, :area_type)
+          params.require(:area).permit(:area_type, :name)
         end
     end
     end

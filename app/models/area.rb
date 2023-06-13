@@ -1,3 +1,3 @@
 class Area < ApplicationRecord
-    enum area_type: { ingreso: 0, gasto: 1 }
+    enum area_type: { Ingreso: 0, Gasto: 1 }
 end
