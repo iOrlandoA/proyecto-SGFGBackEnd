@@ -34,11 +34,12 @@ module Api
     
       def create
         @bill = Bill.new(bill_params)
-          if @bill.save
-            render 'api/bills/show', status: :created
-          else
-            render json: @bill.errors, status: :unprocessable_entity
-          end
+        @bill.area = Area.find(params[:bill][:area_id])
+        if @bill.save
+          render 'api/bills/show', status: :created
+        else
+          render json: @bill.errors, status: :unprocessable_entity
+        end
       end
     
       def update
@@ -56,14 +57,14 @@ module Api
     
       private
       def set_bill
-        @bill = Bill.find_by(bill_ref: params[:bill_ref])
+        @bill = Bill.includes(:area).find_by!(bill_ref: params[:bill_ref])
         unless @bill
           render json: { error: "Bill not found" }, status: :not_found
         end
       end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref)
+          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref, :area_id)
         end
     end
     end
