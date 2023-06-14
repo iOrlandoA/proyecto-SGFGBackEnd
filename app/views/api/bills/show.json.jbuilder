@@ -7,5 +7,6 @@ json.bill do
     json.date_created @bill.date_created
     json.date_expired @bill.date_expired
     json.bill_ref @bill.bill_ref
-end
-
+    json.payments @bill.payments, partial: 'api/payments/payment', as: :payment
+  end
+  

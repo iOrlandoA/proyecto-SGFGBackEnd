@@ -20,9 +20,11 @@ module Api
       end
       
     
-      def show 
-        @payments = Payment.where(bill_ref: @bill.bill_ref)
+      def show
+        @bill = Bill.includes(:payments).find_by(bill_ref: params[:bill_ref])
+        render 'api/bills/show', status: :ok
       end
+      
     
       def new
         @bill = Bill.new
@@ -53,9 +55,12 @@ module Api
       end
     
       private
-        def set_bill
-          @bill = Bill.find(params[:id])
+      def set_bill
+        @bill = Bill.find_by(bill_ref: params[:bill_ref])
+        unless @bill
+          render json: { error: "Bill not found" }, status: :not_found
         end
+      end
     
         def bill_params
           params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref)

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   scope module: :api, path: "api" do
-    resources :bills
+    resources :bills , param: :bill_ref, only: [:show]
     resources :areas
     resources :payments
   end
