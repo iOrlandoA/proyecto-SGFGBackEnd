@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
   scope module: :api, path: "api" do
-    resources :bills, param: :bill_ref, only: [:index, :show, :create, :update, :destroy]
+    resources :bills, param: :id, only: [:index, :show, :create, :update, :destroy]
     resources :areas
     resources :payments
   end

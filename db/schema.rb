@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_14_215921) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_15_002458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,13 +35,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_215921) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.integer "bill_ref"
     t.date "date_created"
     t.float "amount"
     t.integer "voucher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bill_id", null: false
+    t.index ["bill_id"], name: "index_payments_on_bill_id"
   end
 
   add_foreign_key "bills", "areas"
+  add_foreign_key "payments", "bills"
 end

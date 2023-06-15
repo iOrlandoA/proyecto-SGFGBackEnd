@@ -21,7 +21,7 @@ module Api
       
     
       def show
-        @bill = Bill.includes(:payments).find_by(bill_ref: params[:bill_ref])
+        @bill = Bill.includes(:payments).find_by(id: params[:id])
         render 'api/bills/show', status: :ok
       end
       
@@ -57,7 +57,7 @@ module Api
     
       private
       def set_bill
-        @bill = Bill.includes(:area).find_by!(bill_ref: params[:bill_ref])
+        @bill = Bill.includes(:area).find_by!(id: params[:id])
         unless @bill
           render json: { error: "Bill not found" }, status: :not_found
         end

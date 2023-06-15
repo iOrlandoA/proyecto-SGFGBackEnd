@@ -8,7 +8,7 @@ module Api
       end
   
       def show 
-        @bill = Bill.find_by(bill_ref: @payment.bill_ref)
+        @bill = Bill.find_by(id: @payment.bill_id)
       end
   
       def new
@@ -47,7 +47,7 @@ module Api
       end
   
       def payment_params
-        params.require(:payment).permit(:bill_ref, :amount, :voucher)
+        params.require(:payment).permit(:amount, :voucher, :bill_id)
       end
     end
   end

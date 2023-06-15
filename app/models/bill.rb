@@ -1,5 +1,5 @@
 class Bill < ApplicationRecord
-    has_many :payments, foreign_key: 'bill_ref'
+    has_many :payments, dependent: :destroy
     belongs_to :area
 
     validates :name, presence: true, length: { maximum: 200 }
