@@ -19,7 +19,7 @@ module Api
         render json: @bills.to_json(include: :area)
       end
       
-    
+
       def show
         @bill = Bill.includes(:payments, :area).find_by(id: params[:id])
         render 'api/bills/show', status: :ok
@@ -64,7 +64,7 @@ module Api
       end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref, :area_id, :visible)
+          params.require(:bill).permit(:name, :price, :description, :date_created, :date_expired, :bill_ref, :area_id)
         end
     end
     end
