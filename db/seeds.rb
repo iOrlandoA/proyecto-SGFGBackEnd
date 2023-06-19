@@ -33,7 +33,4 @@ Bill.create(name: "BillPrueba1", price: "555.30", description: "descripcion1", d
 Bill.create(name: "BillPrueba2", price: "444.30", description: "descripcion2", date_created: "2023-05-06", date_expired: "2023-07-08", bill_ref: "999", area_id: "2")
 
 
-#Payment.create(amount: 50.5, voucher: 852, bill: bill1)
-#Payment.create(amount: 60.7, voucher: 741, bill: bill1)
-#Payment.create(amount: 69.32, voucher: 963, bill: bill2)
-#Payment.create(amount: 40.5, voucher: 258, bill: bill2)
+
