@@ -12,7 +12,7 @@ module Api
         end
     
         if params[:start_date].present? && params[:end_date].present?
-          query = query.where("date_created >= ? AND date_expired <= ?", params[:start_date], params[:end_date])
+          query = query.where("date_created >= ? AND date_created <= ?", params[:start_date], params[:end_date])
         end
     
         @bills = query
