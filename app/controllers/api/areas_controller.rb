@@ -23,6 +23,7 @@ module Api
     
       def create
         @area = Area.new(area_params)
+        @area.visible = true
           if @area.save
             render 'api/areas/show', status: :created
           else
