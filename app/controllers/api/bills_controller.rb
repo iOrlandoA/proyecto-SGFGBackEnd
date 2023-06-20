@@ -5,23 +5,23 @@ module Api
       before_action :set_bill, only: %i[ show edit update destroy ]
     
       def index
-        query = Bill.all
+        query = Bill.includes(:area).all
     
         if params[:bill_ref].present?
           query = query.where(bill_ref: params[:bill_ref])
         end
     
         if params[:start_date].present? && params[:end_date].present?
-          query = query.where("date_created >= ? AND date_expired <= ?", params[:start_date], params[:end_date])
+          query = query.where("date_created >= ? AND date_created <= ?", params[:start_date], params[:end_date])
         end
     
         @bills = query
-        render json: @bills
+        render json: @bills.to_json(include: :area)
       end
       
-    
+
       def show
-        @bill = Bill.includes(:payments).find_by(id: params[:id])
+        @bill = Bill.includes(:payments, :area).find_by(id: params[:id])
         render 'api/bills/show', status: :ok
       end
       
@@ -64,7 +64,7 @@ module Api
       end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref, :area_id)
+          params.require(:bill).permit(:name, :price, :description, :date_created, :date_expired, :bill_ref, :area_id)
         end
     end
     end

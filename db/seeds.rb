@@ -30,3 +30,5 @@ Area.create(area_type: "Ingreso", name: "- Venta Ganado")
 Area.create(area_type: "Ingreso", name: "- Intereses")
 
 
+
+

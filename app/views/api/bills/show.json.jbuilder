@@ -6,7 +6,9 @@ json.bill do
     json.date_created @bill.date_created
     json.date_expired @bill.date_expired
     json.bill_ref @bill.bill_ref
-    json.area_id @bill.area_id
+    json.area do
+      json.extract! @bill.area, :id, :area_type, :name
+    end
     json.payments @bill.payments, partial: 'api/payments/payment', as: :payment
   end
   
