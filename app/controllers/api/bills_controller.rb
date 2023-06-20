@@ -5,23 +5,23 @@ module Api
       before_action :set_bill, only: %i[ show edit update destroy ]
     
       def index
-        query = Bill.all
+        query = Bill.includes(:area).all
     
         if params[:bill_ref].present?
           query = query.where(bill_ref: params[:bill_ref])
         end
     
         if params[:start_date].present? && params[:end_date].present?
-          query = query.where("date_created >= ? AND date_expired <= ?", params[:start_date], params[:end_date])
+          query = query.where("date_created >= ? AND date_created <= ?", params[:start_date], params[:end_date])
         end
     
         @bills = query
-        render json: @bills
+        render json: @bills.to_json(include: :area)
       end
       
-    
+
       def show
-        @bill = Bill.includes(:payments).find_by(bill_ref: params[:bill_ref])
+        @bill = Bill.includes(:payments, :area).find_by(id: params[:id])
         render 'api/bills/show', status: :ok
       end
       
@@ -34,11 +34,12 @@ module Api
     
       def create
         @bill = Bill.new(bill_params)
-          if @bill.save
-            render 'api/bills/show', status: :created
-          else
-            render json: @bill.errors, status: :unprocessable_entity
-          end
+        @bill.area = Area.find(params[:bill][:area_id])
+        if @bill.save
+          render 'api/bills/show', status: :created
+        else
+          render json: @bill.errors, status: :unprocessable_entity
+        end
       end
     
       def update
@@ -56,14 +57,14 @@ module Api
     
       private
       def set_bill
-        @bill = Bill.find_by(bill_ref: params[:bill_ref])
+        @bill = Bill.includes(:area).find_by!(id: params[:id])
         unless @bill
           render json: { error: "Bill not found" }, status: :not_found
         end
       end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :description, :area, :date_created, :date_expired, :bill_ref)
+          params.require(:bill).permit(:name, :price, :description, :date_created, :date_expired, :bill_ref, :area_id)
         end
     end
     end

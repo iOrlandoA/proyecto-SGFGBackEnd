@@ -29,3 +29,8 @@ Area.create(area_type: "Gasto", name: "- Documento por Pagar")
 Area.create(area_type: "Ingreso", name: "- Venta Ganado")
 Area.create(area_type: "Ingreso", name: "- Intereses")
 
+Bill.create(name: "BillPrueba1", price: "555.30", description: "descripcion1", date_created: "2023-02-03", date_expired: "2023-03-04", bill_ref: "888", area_id: "1")
+Bill.create(name: "BillPrueba2", price: "444.30", description: "descripcion2", date_created: "2023-05-06", date_expired: "2023-07-08", bill_ref: "999", area_id: "2")
+
+
+
