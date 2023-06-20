@@ -3,6 +3,28 @@ module Api
     class BillsController < ApplicationController
       skip_before_action :verify_authenticity_token
       before_action :set_bill, only: %i[ show edit update destroy ]
+
+      def sumbills_by_type
+        start_date = params[:start_date]
+        end_date = params[:end_date]
+  
+        ingreso_price = calculate_total_price(start_date, end_date, area_type: 0)
+        gasto_price = calculate_total_price(start_date, end_date, area_type: 1)
+  
+        result = {
+          ingreso_price: ingreso_price,
+          gasto_price: gasto_price
+        }
+  
+        render json: result
+      end
+  
+    
+  
+      def calculate_total_price(start_date, end_date, area_type:)
+        query = Bill.includes(:area).where(date_created: start_date..end_date)
+        query.joins(:area).where(areas: { area_type: area_type }).sum(:price)
+      end
     
       def index
         query = Bill.includes(:area).all

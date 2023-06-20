@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_19_220507) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_15_002458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "areas", force: :cascade do |t|
     t.integer "area_type"
     t.string "name"
+    t.boolean "visible", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "visible"
   end
 
   create_table "bills", force: :cascade do |t|
