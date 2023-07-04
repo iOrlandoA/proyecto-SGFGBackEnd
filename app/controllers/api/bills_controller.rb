@@ -40,6 +40,18 @@ module Api
         @bills = query
         render json: @bills.to_json(include: :area)
       end
+
+      def date_area_filter
+        start_date = params[:start_date]
+        end_date = params[:end_date]
+        area_name = params[:name]
+        area_type = params[:area_type].to_i # Assuming the area_type is passed as a parameter
+      
+        query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { area_type: area_type, name: area_name })
+      
+        render json: query
+      end
+      
       
 
       def show
