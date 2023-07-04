@@ -4,7 +4,14 @@ module Api
       before_action :set_payment, only: %i[show edit update destroy]
   
       def index
-        @payments = Payment.all
+        query = Payment.all
+  
+        if params[:start_date].present? && params[:end_date].present?
+          query = query.where("date_created >= ? AND date_created <= ?", params[:start_date], params[:end_date])
+        end
+  
+        @payments = query
+        render json: @payments
       end
   
       def show 

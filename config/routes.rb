@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :bills, param: :id, only: [:index, :show, :create, :update, :destroy] do
       collection do
         get 'sumbills_by_type', to: 'bills#sumbills_by_type'
+        get 'date_area_filter'
       end
     end
 
