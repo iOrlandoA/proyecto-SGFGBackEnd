@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :payments
+  resources :areas
+  resources :bills
   namespace :api do
     resources :bills, param: :id, only: [:index, :show, :create, :update, :destroy] do
       collection do
