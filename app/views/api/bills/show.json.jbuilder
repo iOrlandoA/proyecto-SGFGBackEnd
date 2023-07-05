@@ -6,6 +6,7 @@ json.bill do
     json.date_created @bill.date_created
     json.date_expired @bill.date_expired
     json.bill_ref @bill.bill_ref
+    json.full_paid @bill.full_paid
     json.area do
       json.extract! @bill.area, :id, :area_type, :name
     end
