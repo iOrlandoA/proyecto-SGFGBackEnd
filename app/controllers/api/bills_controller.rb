@@ -19,8 +19,6 @@ module Api
         render json: result
       end
   
-    
-  
       def calculate_total_price(start_date, end_date, area_type:)
         query = Bill.includes(:area).where(date_created: start_date..end_date)
         query.joins(:area).where(areas: { area_type: area_type }).sum(:price)
@@ -48,6 +46,16 @@ module Api
         area_type = params[:area_type].to_i # Assuming the area_type is passed as a parameter
       
         query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { area_type: area_type, name: area_name })
+      
+        render json: query
+      end
+
+      def is_paid
+        start_date = params[:start_date]
+        end_date = params[:end_date]
+        area_type = params[:area_type].to_i
+      
+        query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { area_type: area_type }, full_paid: false)
       
         render json: query
       end
@@ -98,7 +106,7 @@ module Api
       end
     
         def bill_params
-          params.require(:bill).permit(:name, :price, :description, :date_created, :date_expired, :bill_ref, :area_id)
+          params.require(:bill).permit(:name, :price, :description, :date_created, :date_expired, :bill_ref, :area_id, :full_paid)
         end
     end
     end

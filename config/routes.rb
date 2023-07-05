@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       collection do
         get 'sumbills_by_type', to: 'bills#sumbills_by_type'
         get 'date_area_filter'
+        get 'is_paid'
       end
     end
 

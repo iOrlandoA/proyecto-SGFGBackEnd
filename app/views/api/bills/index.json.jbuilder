@@ -6,5 +6,6 @@ json.array! @bills do |bill|
   json.date_created bill.date_created
   json.date_expired bill.date_expired
   json.bill_ref bill.bill_ref
+  json.full_paid bill.full_paid
   json.payments bill.payments, partial: 'api/payments/payment', as: :payment
 end
