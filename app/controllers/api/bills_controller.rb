@@ -46,7 +46,7 @@ module Api
       
         query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { id: area_id })
       
-        render json: query
+        render json: query, include: :area
       end
 
       def is_paid
@@ -54,12 +54,11 @@ module Api
         end_date = params[:end_date]
         area_type = params[:area_type].to_i
       
-        query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { area_type: area_type }, full_paid: false)
+        query = Bill.includes(:area).where(date_expired: start_date..end_date, areas: { area_type: area_type }, full_paid: false)
       
-        render json: query
+        render json: query, include: :area
       end
-      
-      
+       
 
       def show
         @bill = Bill.includes(:payments, :area).find_by(id: params[:id])
