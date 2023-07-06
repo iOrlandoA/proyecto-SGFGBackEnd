@@ -10,26 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_03_032547) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_05_152013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "areas", force: :cascade do |t|
-    t.string "area_type"
+    t.integer "area_type"
+    t.string "name"
+    t.boolean "visible", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "bills", force: :cascade do |t|
     t.string "name"
-    t.integer "price"
+    t.float "price"
     t.string "description"
-    t.string "area"
     t.date "date_created"
     t.date "date_expired"
+    t.integer "bill_ref"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "area_id"
+    t.boolean "full_paid", default: false
+    t.index ["area_id"], name: "index_bills_on_area_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.date "date_created"
+    t.float "amount"
     t.integer "voucher"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bill_id", null: false
+    t.index ["bill_id"], name: "index_payments_on_bill_id"
   end
 
+  add_foreign_key "bills", "areas"
+  add_foreign_key "payments", "bills"
 end

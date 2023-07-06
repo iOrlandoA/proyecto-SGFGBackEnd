@@ -1,40 +1,34 @@
+Area.create(area_type: "Gasto", name: "Obra en estabulado nuevo Sota", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Ganado", visible: true)
+Area.create(area_type: "Gasto", name: "Servicio Transporte", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Alimento", visible: true)
+Area.create(area_type: "Gasto", name: "Comisiones compra Ganado", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Combustible", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Piña", visible: true)
+Area.create(area_type: "Gasto", name: "Mantenimiento ó Reparación", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Repuestos", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Yuca", visible: true)
+Area.create(area_type: "Gasto", name: "Articulos de Limpieza", visible: true)
+Area.create(area_type: "Gasto", name: "Articulos de Oficina", visible: true)
+Area.create(area_type: "Gasto", name: "Material P/Cerca", visible: true)
+Area.create(area_type: "Gasto", name: "Medicamentos", visible: true)
+Area.create(area_type: "Gasto", name: "Compra corona", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Boyas", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Refrigerios", visible: true)
+Area.create(area_type: "Gasto", name: "Servicio Torno", visible: true)
+Area.create(area_type: "Gasto", name: "Talonario Guías", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Pollinaza", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Mangueras y Accesorios", visible: true)
+Area.create(area_type: "Gasto", name: "Rebajo Pago Anticipado", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Agroquimicos", visible: true)
+Area.create(area_type: "Gasto", name: "Compra Sal/Miel", visible: true)
+Area.create(area_type: "Gasto", name: "Ley CORFOGA", visible: true)
+Area.create(area_type: "Gasto", name: "Cuenta por Pagar", visible: true)
+Area.create(area_type: "Gasto", name: "Documento por Pagar", visible: true)
+
+Area.create(area_type: "Ingreso", name: "Venta Ganado", visible: true)
+Area.create(area_type: "Ingreso", name: "Intereses", visible: true)
 
 
 
-Area.create(area_type:"Comisión Transferencia TFT");
 
-
-Area.create(area_type:"Gasto - Obra en estabulado nuevo Sota");
-Area.create(area_type:"Gasto - Compra Ganado");
-Area.create(area_type:"Gasto - Servicio Transporte");
-Area.create(area_type:"Gasto - Compra Alimento");
-Area.create(area_type:"Gasto - Comisiones compra Ganado");
-Area.create(area_type:"Gasto - Compra Combustible");
-Area.create(area_type:"Gasto - Compra Piña");
-Area.create(area_type:"Gasto - Mantenimiento ó Reparación");
-Area.create(area_type:"Gasto - Compra Repuestos");
-Area.create(area_type:"Gasto - Compra Yuca");
-Area.create(area_type:"Gasto - Articulos de Limpieza");
-Area.create(area_type:"Gasto - Articulos de Oficina");
-Area.create(area_type:"Gasto - Material P/Cerca");
-Area.create(area_type:"Gasto - Medicamentos");
-Area.create(area_type:"Gasto - Compra corona");
-Area.create(area_type:"Gasto - Compra Boyas");
-Area.create(area_type:"Gasto - Compra Refrigerios");
-Area.create(area_type:"Gasto - Servicio Torno");
-Area.create(area_type:"Gasto - Talonario Guías");
-Area.create(area_type:"Gasto - Compra Pollinaza");
-Area.create(area_type:"Gasto - Compra Mangueras y Accesorios");
-Area.create(area_type:"Gasto - Rebajo Pago Anticipado");
-Area.create(area_type:"Gasto - Compra Agroquimicos");
-Area.create(area_type:"Gasto - Compra Sal/Miel");
-Area.create(area_type:"Gasto - Ley CORFOGA");
-Area.create(area_type:"Gasto - Cuenta por Pagar");
-Area.create(area_type:"Gasto - Documento por Pagar");
-Area.create(area_type:"Transacciones Saliente Banco");
-
-
-Area.create(area_type:"Ingreso - Venta Ganado");
-Area.create(area_type:"Ingreso - Intereses");
-Area.create(area_type:"Cuenta por Cobrar");
-Area.create(area_type:"Transacciones Entrante Banco");

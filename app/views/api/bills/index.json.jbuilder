@@ -3,9 +3,9 @@ json.array! @bills do |bill|
   json.name bill.name
   json.price bill.price
   json.description bill.description
-  json.area bill.area
   json.date_created bill.date_created
   json.date_expired bill.date_expired
-  json.voucher bill.voucher
+  json.bill_ref bill.bill_ref
+  json.full_paid bill.full_paid
+  json.payments bill.payments, partial: 'api/payments/payment', as: :payment
 end
-

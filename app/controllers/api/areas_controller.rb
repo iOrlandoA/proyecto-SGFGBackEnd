@@ -9,7 +9,12 @@ module Api
       end
     
       def show; end
-    
+      
+      def visible
+        @visible = Area.where(visible: true)
+        render json: @visible.to_json(), status: :ok
+      end
+
       def new
         @area = Area.new
       end
@@ -18,6 +23,7 @@ module Api
     
       def create
         @area = Area.new(area_params)
+        @area.visible = true
           if @area.save
             render 'api/areas/show', status: :created
           else
@@ -44,7 +50,7 @@ module Api
         end
     
         def area_params
-          params.require(:area).permit(:area_type)
+          params.require(:area).permit(:area_type, :name, :visible)
         end
     end
     end
