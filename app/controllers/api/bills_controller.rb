@@ -42,10 +42,9 @@ module Api
       def date_area_filter
         start_date = params[:start_date]
         end_date = params[:end_date]
-        area_name = params[:name]
-        area_type = params[:area_type].to_i # Assuming the area_type is passed as a parameter
+        area_id = params[:area_id].to_i # Assuming the area ID is passed as a parameter
       
-        query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { area_type: area_type, name: area_name })
+        query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { id: area_id })
       
         render json: query
       end
@@ -53,12 +52,13 @@ module Api
       def is_paid
         start_date = params[:start_date]
         end_date = params[:end_date]
-        area_type = params[:area_type].to_i
+        area_id = params[:area_id].to_i
       
-        query = Bill.includes(:area).where(date_created: start_date..end_date, areas: { area_type: area_type }, full_paid: false)
+        query = Bill.includes(:area).where(date_created: start_date..end_date, area_id: area_id, full_paid: false)
       
         render json: query
       end
+      
       
       
 
