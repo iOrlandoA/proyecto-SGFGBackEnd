@@ -26,7 +26,7 @@ module Api
     
       def index
         query = Bill.includes(:area).all
-    
+        
         if params[:bill_ref].present?
           query = query.where(bill_ref: params[:bill_ref])
         end
@@ -34,8 +34,17 @@ module Api
         if params[:start_date].present? && params[:end_date].present?
           query = query.where("date_created >= ? AND date_created <= ?", params[:start_date], params[:end_date])
         end
+        
     
-        @bills = query
+        @bills = query.map do |bill|
+          total_payments = bill.payments.sum(:amount)
+          remaining_balance = bill.price - total_payments
+      
+          {
+            bill: bill.as_json(include: :area).merge(total_payments: total_payments, remaining_balance: remaining_balance)
+          }
+        end.compact
+
         render json: @bills.to_json(include: :area)
       end
 
@@ -54,10 +63,24 @@ module Api
         end_date = params[:end_date]
         area_type = params[:area_type].to_i
       
-        query = Bill.includes(:area).where(date_expired: start_date..end_date, areas: { area_type: area_type }, full_paid: false)
+        bills = Bill.includes(:payments, :area)
+                    .where(date_expired: start_date..end_date)
+                    .where(areas: { area_type: area_type })
       
-        render json: query, include: :area
+        results = bills.map do |bill|
+          total_payments = bill.payments.sum(:amount)
+          remaining_balance = bill.price - total_payments
+      
+          next if remaining_balance <= 0
+      
+          {
+            bill: bill.as_json(include: :area).merge(total_payments: total_payments, remaining_balance: remaining_balance)
+          }
+        end.compact
+      
+        render json: results
       end
+      
        
 
       def show
