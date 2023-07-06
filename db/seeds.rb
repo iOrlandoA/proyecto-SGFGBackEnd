@@ -23,8 +23,6 @@ Area.create(area_type: "Gasto", name: "Rebajo Pago Anticipado", visible: true)
 Area.create(area_type: "Gasto", name: "Compra Agroquimicos", visible: true)
 Area.create(area_type: "Gasto", name: "Compra Sal/Miel", visible: true)
 Area.create(area_type: "Gasto", name: "Ley CORFOGA", visible: true)
-Area.create(area_type: "Gasto", name: "Cuenta por Pagar", visible: true)
-Area.create(area_type: "Gasto", name: "Documento por Pagar", visible: true)
 
 Area.create(area_type: "Ingreso", name: "Venta Ganado", visible: true)
 Area.create(area_type: "Ingreso", name: "Intereses", visible: true)
